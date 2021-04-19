@@ -1,6 +1,7 @@
 package com.davi.pattern.singleton.register;
 
 /**
+ * Effective Java推荐使用
  * @Date 2021/4/19 23:07
  * @Created by hdw
  */
