@@ -12,19 +12,23 @@ public class ContainerSingleton {
 
     }
 
-    private static Map<String, Object> ioc = new ConcurrentHashMap<>();
+    private static final Map<String, Object> ioc = new ConcurrentHashMap<>();
 
+    // 对象方便管理，其实也是属于懒加载
+    // 存在线程安全问题，用synchronized解决
     public static Object getBean(String className) {
-        if (!ioc.containsKey(className)) {
-            Object obj = null;
-            try {
-                obj = Class.forName(className).newInstance();
-                ioc.put(className, obj);
-            } catch (Exception e) {
-                e.printStackTrace();
+        synchronized (ioc) {
+            if (!ioc.containsKey(className)) {
+                Object obj = null;
+                try {
+                    obj = Class.forName(className).newInstance();
+                    ioc.put(className, obj);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return obj;
             }
-            return obj;
+            return ioc.get(className);
         }
-        return ioc.get(className);
     }
 }
