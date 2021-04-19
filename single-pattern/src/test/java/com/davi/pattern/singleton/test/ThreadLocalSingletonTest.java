@@ -1,28 +1,23 @@
 package com.davi.pattern.singleton.test;
 
-import com.davi.pattern.singleton.lazy.LazyDoubleCheckSingleton;
-import com.davi.pattern.singleton.lazy.LazySimpleSingleton;
 import com.davi.pattern.singleton.threadlocal.ThreadLocalSingleton;
 
 /**
- * @Description 线程类
- * 用两个线程来模拟多线程
- * @Date 2021/2/15 10:35
+ * @Date 2021/4/20 0:13
  * @Created by hdw
  */
-public class ExecutorThread implements Runnable {
+public class ThreadLocalSingletonTest {
+    public static void main(String[] args) {
+        System.out.println(Thread.currentThread().getName() + ":" + ThreadLocalSingleton.getInstance());
+        System.out.println(Thread.currentThread().getName() + ":" + ThreadLocalSingleton.getInstance());
+        System.out.println(Thread.currentThread().getName() + ":" + ThreadLocalSingleton.getInstance());
+        System.out.println(Thread.currentThread().getName() + ":" + ThreadLocalSingleton.getInstance());
+        System.out.println(Thread.currentThread().getName() + ":" + ThreadLocalSingleton.getInstance());
 
-    @Override
-    public void run() {
-//        LazyDoubleCheckSingleton singleton = LazyDoubleCheckSingleton.getInstance();
-//        LazySimpleSingleton singleton = LazySimpleSingleton.getInstance();
-//        System.out.println(Thread.currentThread().getName() + ":" + singleton);
+        Thread t1 = new Thread(new ExecutorThread());
+        Thread t2 = new Thread(new ExecutorThread());
 
-
-        System.out.println(Thread.currentThread().getName() + ":" + ThreadLocalSingleton.getInstance());
-        System.out.println(Thread.currentThread().getName() + ":" + ThreadLocalSingleton.getInstance());
-        System.out.println(Thread.currentThread().getName() + ":" + ThreadLocalSingleton.getInstance());
-        System.out.println(Thread.currentThread().getName() + ":" + ThreadLocalSingleton.getInstance());
-        System.out.println(Thread.currentThread().getName() + ":" + ThreadLocalSingleton.getInstance());
+        t1.start();
+        t2.start();
     }
 }
