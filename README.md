@@ -29,3 +29,9 @@ Spring中用到的设计模式:
 3、推荐书籍《设计模式-可复用面向对象软件的基础》
 3、推荐书籍《Effective Java》
 
+学习路线:
+Spring IOC  工厂、单例、装饰器
+Spring AOP  代理、观察者
+Spring MVC  委派、适配器
+Spring JDBC 模板方法
+
