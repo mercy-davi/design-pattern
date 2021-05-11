@@ -51,7 +51,7 @@ public class QiTianDaSheng extends Monkey implements Cloneable, Serializable {
         qiTianDaSheng.weight = target.weight;
 
         qiTianDaSheng.jinGuBang = target.jinGuBang;
-        qiTianDaSheng.birthday = new Date();
+        qiTianDaSheng.birthday = target.birthday;
         return qiTianDaSheng;
     }
 }
