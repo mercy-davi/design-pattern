@@ -12,6 +12,7 @@
         <module>single-pattern</module>
         <module>prototype-pattern</module>
         <module>factory-pattern</module>
+        <module>proxy-pattern</module>
     </modules>
 
     <dependencies>
