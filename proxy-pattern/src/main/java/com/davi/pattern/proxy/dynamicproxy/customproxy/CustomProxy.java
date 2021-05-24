@@ -1,7 +1,12 @@
 package com.davi.pattern.proxy.dynamicproxy.customproxy;
 
+import javax.tools.JavaCompiler;
+import javax.tools.JavaFileObject;
+import javax.tools.StandardJavaFileManager;
+import javax.tools.ToolProvider;
 import java.io.File;
 import java.io.FileWriter;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
 /**
@@ -26,15 +31,29 @@ public class CustomProxy {
             fw.write(src);
             fw.flush();
             fw.close();
-        } catch (Exception e) {
 
+            JavaCompiler systemJavaCompiler = ToolProvider.getSystemJavaCompiler();
+            StandardJavaFileManager standardFileManager = systemJavaCompiler
+                    .getStandardFileManager(null, null, null);
+            Iterable<? extends JavaFileObject> iterable = standardFileManager.getJavaFileObjects(file);
+            JavaCompiler.CompilationTask task = systemJavaCompiler
+                    .getTask(null, standardFileManager, null, null, null, null);
+            task.call();
+            standardFileManager.close();
+
+            Class<?> proxyClass = loader.findClass("$Proxy0");
+            Constructor<?> constructor = proxyClass.getConstructor(CustomInvocationHandler.class);
+
+            return constructor.newInstance(h);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }
 
     private static String generateSrc(Class<?>[] interfaces) {
         // 用代码写代码
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append("package com.davi.pattern.proxy.dynamicproxy.customproxy;" + line);
         sb.append("import com.davi.pattern.proxy.Person;" + line);
         sb.append("import java.lang.reflect.*;" + line);

@@ -9,10 +9,10 @@ import java.lang.reflect.Method;
  * @Created by hdw
  */
 public class CustomMatchMaker implements CustomInvocationHandler {
-    private Person target;
+    private Object target;
 
-    public Object getInstance(Person person) throws Exception {
-        this.target = person;
+    public Object getInstance(Object object) throws Exception {
+        this.target = object;
         Class<?> clazz = target.getClass();
         return CustomProxy.newProxyInstance(new CustomClassLoader(), clazz.getInterfaces(), this);
     }

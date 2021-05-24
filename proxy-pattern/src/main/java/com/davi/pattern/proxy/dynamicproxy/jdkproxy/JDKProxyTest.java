@@ -4,6 +4,7 @@ import com.davi.pattern.proxy.Person;
 import sun.misc.ProxyGenerator;
 
 import java.io.FileOutputStream;
+import java.lang.reflect.Method;
 
 /**
  * @Date 2021/5/19 23:58
@@ -12,8 +13,9 @@ import java.io.FileOutputStream;
 public class JDKProxyTest {
     public static void main(String[] args) {
         try {
-            Person obj = (Person) new JDKMatchMaker().getInstance(new Girl());
-            obj.findLove();
+            Object obj = new JDKMatchMaker().getInstance(new Girl());
+            Method method = obj.getClass().getMethod("findLove");
+            method.invoke(obj);
 
             // 动态代理原理：动态生成字节码、字节码重组（代理类）
             byte[] bytes = ProxyGenerator.generateProxyClass("$Proxy0", new Class[]{Person.class});

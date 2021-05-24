@@ -6,6 +6,7 @@ import com.davi.pattern.proxy.dynamicproxy.jdkproxy.JDKMatchMaker;
 import sun.misc.ProxyGenerator;
 
 import java.io.FileOutputStream;
+import java.lang.reflect.Method;
 
 /**
  * @Date 2021/5/19 23:58
@@ -14,8 +15,9 @@ import java.io.FileOutputStream;
 public class CustomProxyTest {
     public static void main(String[] args) {
         try {
-            Person obj = (Person) new CustomMatchMaker().getInstance(new Girl());
-            obj.findLove();
+            Object obj = new CustomMatchMaker().getInstance(new Girl());
+            Method method = obj.getClass().getMethod("findLove");
+            method.invoke(obj);
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -8,9 +8,9 @@ import com.davi.pattern.proxy.Person;
  */
 public class Father {
 
-    private Person person;
+    private Son person;
 
-    Father(Person person) {
+    Father(Son person) {
         this.person = person;
     }
 

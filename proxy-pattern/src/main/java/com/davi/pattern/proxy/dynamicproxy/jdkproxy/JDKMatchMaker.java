@@ -11,7 +11,7 @@ import java.lang.reflect.Proxy;
  * @Created by hdw
  */
 public class JDKMatchMaker implements InvocationHandler {
-    private Person target;
+    private Object target;
 
     public Object getInstance(Person person) throws Exception {
         this.target = person;
