@@ -1,11 +1,7 @@
 package com.davi.pattern.proxy.dynamicproxy.customproxy;
 
-import com.davi.pattern.proxy.Person;
 import com.davi.pattern.proxy.dynamicproxy.jdkproxy.Girl;
-import com.davi.pattern.proxy.dynamicproxy.jdkproxy.JDKMatchMaker;
-import sun.misc.ProxyGenerator;
 
-import java.io.FileOutputStream;
 import java.lang.reflect.Method;
 
 /**
@@ -15,7 +11,9 @@ import java.lang.reflect.Method;
 public class CustomProxyTest {
     public static void main(String[] args) {
         try {
+            // 代理对象：$Proxy0
             Object obj = new CustomMatchMaker().getInstance(new Girl());
+            System.out.println(obj);
             Method method = obj.getClass().getMethod("findLove");
             method.invoke(obj);
 

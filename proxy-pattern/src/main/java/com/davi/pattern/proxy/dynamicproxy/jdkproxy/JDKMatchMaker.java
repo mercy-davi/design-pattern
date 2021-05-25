@@ -1,7 +1,5 @@
 package com.davi.pattern.proxy.dynamicproxy.jdkproxy;
 
-import com.davi.pattern.proxy.Person;
-
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -13,8 +11,8 @@ import java.lang.reflect.Proxy;
 public class JDKMatchMaker implements InvocationHandler {
     private Object target;
 
-    public Object getInstance(Person person) throws Exception {
-        this.target = person;
+    public Object getInstance(Object obj) throws Exception {
+        this.target = obj;
         Class<?> clazz = target.getClass();
         return Proxy.newProxyInstance(clazz.getClassLoader(), clazz.getInterfaces(), this);
     }

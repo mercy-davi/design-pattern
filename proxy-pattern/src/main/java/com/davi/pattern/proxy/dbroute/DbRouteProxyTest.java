@@ -1,6 +1,6 @@
 package com.davi.pattern.proxy.dbroute;
 
-import com.davi.pattern.proxy.dbroute.proxy.OrderServiceStaticProxy;
+import com.davi.pattern.proxy.dbroute.proxy.OrderServiceDynamicProxy;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,7 +20,8 @@ public class DbRouteProxyTest {
             Date date = sdf.parse("2020/05/20");
             order.setCreateTime(date.getTime());
 
-            IOrderService orderService = new OrderServiceStaticProxy(new OrderService());
+//            IOrderService orderService = new OrderServiceStaticProxy(new OrderService());
+            IOrderService orderService = (IOrderService) new OrderServiceDynamicProxy().getInstance(new OrderService());
             orderService.createOrder(order);
         } catch (ParseException e) {
             e.printStackTrace();
