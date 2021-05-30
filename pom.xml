@@ -13,6 +13,7 @@
         <module>prototype-pattern</module>
         <module>factory-pattern</module>
         <module>proxy-pattern</module>
+        <module>delegate-pattern</module>
     </modules>
 
     <dependencies>
