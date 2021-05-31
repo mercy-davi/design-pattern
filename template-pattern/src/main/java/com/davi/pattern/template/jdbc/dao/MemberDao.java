@@ -5,7 +5,6 @@ import com.davi.pattern.template.jdbc.Member;
 import com.davi.pattern.template.jdbc.RowMapper;
 
 import javax.sql.DataSource;
-import java.sql.ResultSet;
 import java.util.List;
 
 /**

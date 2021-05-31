@@ -6,7 +6,7 @@ package com.davi.pattern.template.course;
  */
 public class BigDataCourse extends NetworkCourse {
 
-    private boolean needHomeworkFlag;
+    private final boolean needHomeworkFlag;
 
     public BigDataCourse(boolean needHomeworkFlag) {
         this.needHomeworkFlag = needHomeworkFlag;
