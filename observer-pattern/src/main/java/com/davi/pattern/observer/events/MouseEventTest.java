@@ -16,7 +16,7 @@ public class MouseEventTest {
 
         Mouse mouse = new Mouse();
 
-        //@谁？  @回调方法
+        // @谁？  @回调方法
         mouse.addListener(MouseEventType.ON_CLICK, callback);
         mouse.addListener(MouseEventType.ON_FOCUS, callback);
 

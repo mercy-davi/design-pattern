@@ -45,12 +45,12 @@ public class Mouse extends EventListener {
     }
 
     public void blur() {
-        System.out.println("调用获焦方法");
+        System.out.println("调用失焦方法");
         this.trigger(MouseEventType.ON_BLUR);
     }
 
     public void focus() {
-        System.out.println("调用失焦方法");
+        System.out.println("调用获焦方法");
         this.trigger(MouseEventType.ON_FOCUS);
     }
 }
